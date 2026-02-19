@@ -113,7 +113,7 @@ export default function VideoSection() {
                   onPlay={() => setPlaying(true)}
                   onPause={() => setPlaying(false)}
                 >
-                  <source src="/demo-video.mp4" type="video/mp4" />
+                  <source src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/demo-video.mp4`} type="video/mp4" />
                 </video>
 
                 {/* CRT scan lines */}

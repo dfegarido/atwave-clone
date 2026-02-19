@@ -210,10 +210,10 @@ export default function Hero() {
                   loop
                   playsInline
                   preload="none"
-                  poster="/images/work-01-saas.jpg"
+                  poster={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work-01-saas.jpg`}
                   className="h-full w-full object-cover"
                 >
-                  <source src="/hero-bg.mp4" type="video/mp4" />
+                  <source src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/hero-bg.mp4`} type="video/mp4" />
                 </video>
                 {/* Dark-to-transparent overlay for contrast */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />

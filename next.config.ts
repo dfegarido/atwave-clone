@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Expose basePath to client components so raw <video> / <img> tags can prefix paths.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;
