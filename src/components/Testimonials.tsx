@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { assetPath } from "@/lib/assetPath";
 import { Quote } from "lucide-react";
 import FadeIn from "./FadeIn";
 
@@ -12,7 +13,7 @@ const testimonials = [
     name: "Sarah Chen",
     title: "VP of Growth",
     company: "Meridian Capital Group",
-    avatar: "/images/avatar-sarah.jpg",
+    avatar: assetPath("/images/avatar-sarah.jpg"),
   },
   {
     quote:
@@ -20,7 +21,7 @@ const testimonials = [
     name: "Marcus Rivera",
     title: "Chief Marketing Officer",
     company: "Arclight Technologies",
-    avatar: "/images/avatar-marcus.jpg",
+    avatar: assetPath("/images/avatar-marcus.jpg"),
   },
 ];
 

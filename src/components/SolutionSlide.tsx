@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "./FadeIn";
@@ -93,7 +94,7 @@ export default function SolutionSlide() {
               className="relative overflow-hidden rounded-2xl border border-gray-200/50 shadow-2xl aspect-[4/3]"
             >
               <Image
-                src="/images/solution-analytics.jpg"
+                src={assetPath("/images/solution-analytics.jpg")}
                 alt="Performance analytics dashboard"
                 fill
                 className="object-cover"

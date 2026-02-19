@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
+import { assetPath } from "@/lib/assetPath";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ const projects = [
     title: "Enterprise SaaS Platform Scales Pipeline 3.2x",
     stat: "+3.2x pipeline",
     detail: "90 days to results",
-    image: "/images/work-01-saas.jpg",
+    image: assetPath("/images/work-01-saas.jpg"),
     overlay: "from-accent/70 via-blue-900/60 to-navy-deep/80",
   },
   {
@@ -24,7 +25,7 @@ const projects = [
     title: "Global Financial Services Firm Reduces CAC by 47%",
     stat: "47% lower CAC",
     detail: "Full-funnel attribution",
-    image: "/images/work-02-finance.jpg",
+    image: assetPath("/images/work-02-finance.jpg"),
     overlay: "from-blue-900/70 via-cyan-900/60 to-navy-deep/80",
   },
   {
@@ -33,7 +34,7 @@ const projects = [
     title: "Healthcare Leader Achieves 2.8x ROAS in 90 Days",
     stat: "2.8x ROAS",
     detail: "Zero wasted impressions",
-    image: "/images/work-03-health.jpg",
+    image: assetPath("/images/work-03-health.jpg"),
     overlay: "from-indigo-900/70 via-violet-900/60 to-navy-deep/80",
   },
 ];

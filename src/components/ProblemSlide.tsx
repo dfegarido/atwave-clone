@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -66,7 +67,7 @@ export default function ProblemSlide() {
       {/* Subtle abstract photo background */}
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="/images/problem-bg.jpg"
+          src={assetPath("/images/problem-bg.jpg")}
           alt=""
           fill
           className="object-cover opacity-10 mix-blend-luminosity"
