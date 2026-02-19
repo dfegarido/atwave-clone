@@ -36,9 +36,9 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          # GITHUB_REPOSITORY is injected automatically by GitHub Actions.
-          # next.config.ts uses it to set basePath and assetPrefix (e.g. /atwave-clone).
-          GITHUB_REPOSITORY: ${{ github.repository }}
+          # Hardcoded to the repo subpath on GitHub Pages.
+          # Update this if you rename the repository.
+          NEXT_PUBLIC_BASE_PATH: /atwave-clone
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
