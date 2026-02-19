@@ -1,26 +1,144 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #0B1F3B;
+  --color-navy-light: #122B52;
+  --color-navy-deep: #071428;
+  --color-accent: #2563EB;
+  --color-accent-light: #3B82F6;
+  --color-surface: #F5F7FA;
+  --color-muted: #6B7280;
+
+  /* Typography — editorial three-font system */
+  --font-heading: var(--font-heading), "Archivo Black",  system-ui, sans-serif;
+  --font-serif:   var(--font-serif),   "Tangerine",      cursive;
+  --font-body:    var(--font-body),    "Inter",          system-ui, sans-serif;
+  --font-mono:    var(--font-body),    "Inter",          system-ui, sans-serif;
+
+  /* Aliases used in Tailwind utilities */
+  --font-sans:    var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* scroll-behavior removed — Lenis handles smooth scrolling */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+h1, h2 {
+  font-weight: 400; /* Archivo Black has a single weight — 400 renders as ultra-bold */
+}
+
+/* Tangerine script accent — scale up since script fonts render small */
+.font-serif {
+  font-family: var(--font-serif);
+  font-size: 1.35em;
+  line-height: 1;
+}
+
+
+code, pre, kbd, samp {
+  font-family: ui-monospace, "SF Mono", monospace;
+}
+
+::selection {
+  background-color: #2563EB;
+  color: white;
+}
+
+/* Marquee — still used by LogoStrip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Float animations — used by Hero floating badges */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes float-down {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-down {
+  animation: float-down 4.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Fullscreen presentation slide utility */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Subtle grid-line background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Dot matrix background */
+.bg-dots {
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Gradient border glow utility */
+.border-glow {
+  position: relative;
+}
+.border-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(37,99,235,0.5), rgba(59,130,246,0.2), rgba(124,58,237,0.4));
+  z-index: -1;
+  filter: blur(2px);
+}
+
+/* Typewriter cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Pulse glow for live indicators */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
