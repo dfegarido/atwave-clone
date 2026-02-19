@@ -36,11 +36,9 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          # Set REPO_NAME to your GitHub repository name (the part after your username).
-          # Example: if your repo is github.com/youruser/atwave-copy, set it to "atwave-copy".
-          # Leave it empty ("") if you are deploying to a custom domain or a user/org root page
-          # (i.e. youruser.github.io with no subpath).
-          REPO_NAME: ${{ vars.REPO_NAME }}
+          # GITHUB_REPOSITORY is injected automatically by GitHub Actions.
+          # next.config.ts uses it to set basePath and assetPrefix (e.g. /atwave-clone).
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,14 +1,16 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-const repoName = process.env.REPO_NAME ?? "";
+// GITHUB_REPOSITORY is automatically set by GitHub Actions (e.g. "dfegarido/atwave-clone").
+// Locally it is undefined, so basePath stays "" and the dev server works normally.
+const repo = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const basePath = repo ? `/${repo}` : "";
 
 const nextConfig: NextConfig = {
   turbopack: {},
   output: "export",
-  // Set basePath to /repo-name when deploying to GitHub Pages project site.
-  // Leave empty ("") when deploying to a custom domain or user/org root site.
-  basePath: isProd && repoName ? `/${repoName}` : "",
+  basePath,
+  // assetPrefix must match basePath so CSS/JS/font URLs are correct on GitHub Pages.
+  assetPrefix: basePath,
   images: {
     unoptimized: true,
   },
